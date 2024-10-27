@@ -1,0 +1,1178 @@
+{
+	"info": {
+		"_postman_id": "9d162394-f50c-4f3c-8b32-6d2cb89c1fec",
+		"name": "Deutsche Aligners",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30085623",
+		"_collection_link": "https://bluemandarin.postman.co/workspace/My-Workspace~7f983465-818f-4214-87d7-d5173630def0/collection/30085623-9d162394-f50c-4f3c-8b32-6d2cb89c1fec?action=share&source=collection_link&creator=30085623"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login Basic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"{{DENTIST_ADMIN_EMAIL}}\",\n\t\"password\": \"changeit\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/login/basic",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"login",
+								"basic"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login Basic",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{API_KEY}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"{{ADMIN_EMAIL}}\",\n\t\"password\": \"changeit\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/login/basic",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"login",
+										"basic"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Logout Current",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/logout",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout Current",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{API_KEY}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/logout",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-yQ9pei48Nn+TPvgEsVtjDLBwzpc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Dec 2022 11:43:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"10000\",\n    \"message\": \"Logout success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Token Refresh",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"refreshToken\" : \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGkuZGV2Lnh5ei5jb20iLCJhdWQiOiJ4eXouY29tIiwic3ViIjoiNjUyM2RkZjJlMWQxMzk1NTY0N2FkM2U5IiwiaWF0IjoxNjk3NjA1MjE4LCJleHAiOjE2OTgyMTAwMTgsInBybSI6IjYzODI1ODk0NjBlNDBmODVmMmY1ZThkNTk5ODNiMzg1ZTczYzVmOWM4Njg4NDUwOWJlZDQyMzYxN2FmNzVjNzQzZjI5MDBhNGIzMGUyOTk4MmU5NjYwOGNlYmJkYTQ2ZjNiZDFiNGQ5YWVkM2QyMWIyMGM1ODM5ZTNhYjFiOWI1In0.aMV_m27Dbm0ajcNJcQntumIW9t8cQe_SWRQ7oYWJViw\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/token/refresh",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"token",
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Token Refresh",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{API_KEY}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"refreshToken\" : \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGkuZGV2Lnh5ei5jb20iLCJhdWQiOiJ4eXouY29tIiwic3ViIjoiNjNhMTk3YjM5ZTA3Zjg1OTgyNmU2NjJhIiwiaWF0IjoxNjcxNTM2NzE5LCJleHAiOjE2NzIxNDE1MTksInBybSI6IjI0NGFiMGU1ZTNjZTQ3YTgwMzM3NjZiMmJkOGFjZjRkMTg5NTY2OThlZjY4MGE5OWM3Yzg4ZTFiYWE4YzA5MjZjMTI2OWI1NTcyNDgyZjYwYzU0ZmRkZTZiYTRlOTBkODZiYzE0YzQ0MTc1NzM5NTEyNDIyZjM3NzhkNmUyMTlmIn0.VAPfM9NPuVzL6jbNmTcdPcc-kA8MwVpHjgPj8jHzi9ml-pw5WM6XSNfi4qd9dHfw8xVw599zQSvoYs7xNPtobw\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/token/refresh",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"token",
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "984"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3d8-fcmypfXmnpRwpwFRl2ueir+NiLE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Dec 2022 11:45:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"10000\",\n    \"message\": \"Token Issued\",\n    \"accessToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGkuZGV2Lnh5ei5jb20iLCJhdWQiOiJ4eXouY29tIiwic3ViIjoiNjNhMTk3YjM5ZTA3Zjg1OTgyNmU2NjJhIiwiaWF0IjoxNjcxNTM2NzQwLCJleHAiOjE2NzE3MDk1NDAsInBybSI6Ijk1M2E5ZTFkOTAwM2JhNzgxMjlkNDU1M2VkYzBhZjk2MDc0ZWZkMTUzNjMyMjIzZjUxNjBkZDk4MmI3NThlODAyNTFlY2Y1YTZhMmQ5OTM4MGExNjM5Y2Q5MTcxYzY4ZDVjMGQ0ZDdmOTNhZjU3MzIxY2M0NjRmYWQyZWZlNjY2In0.MvEmm8C_pwjV9O4sIPOGi-w0WDvLxISEOAIlu6kqX8dS-Sc98cZFtEZ3ccmLJrf6ELzzEx55Fb9Ds3xID7i24Q\",\n    \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGkuZGV2Lnh5ei5jb20iLCJhdWQiOiJ4eXouY29tIiwic3ViIjoiNjNhMTk3YjM5ZTA3Zjg1OTgyNmU2NjJhIiwiaWF0IjoxNjcxNTM2NzQwLCJleHAiOjE2NzIxNDE1NDAsInBybSI6ImQ2MTBlZGQyODJhZDlkYWRmYzQwNzU5YmZiODdjN2JhNGUzZTA3MjZmYWE2NTYwNmY0NzEzOGFlOWIwYjZmMjM0YzU2Yjg0OGU0OThiMTc4ZjExNjM3NTE4ZGQyN2NlMzZhOTcyMGYxZDEwY2NiZGNhZjJiYmU1M2YwZDI1NGQ2In0.dP4ZH2zrZp85GmA8YYJ5rjBZvuhnntkKX9AP_fADFda6GLDFDKz3ib8kSD2FlNKd2PMWJH__Ec0PjsZwFxoFHw\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Profile Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Yusuf Delvi\",\n\t\"profilePicUrl\": \"https://avatars1.githubusercontent.com/u/11065002?s=460&u=1e8e42bda7e6f579a2b216767b2ed986619bbf78&v=4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profile",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Profile Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{API_KEY}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Janishar Ali - Coding Guru\",\n\t\"profilePicUrl\": \"https://avatars1.githubusercontent.com/u/11065002?s=460&u=1e8e42bda7e6f579a2b216767b2ed986619bbf78&v=4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/profile",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "216"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d8-GjpUnWfcPsP6RKAQnkaoNYm7Jrw\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Dec 2022 11:49:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"10000\",\n    \"message\": \"Profile updated\",\n    \"data\": {\n        \"name\": \"Janishar Ali - Coding Guru\",\n        \"profilePicUrl\": \"https://avatars1.githubusercontent.com/u/11065002?s=460&u=1e8e42bda7e6f579a2b216767b2ed986619bbf78&v=4\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Profile Private",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/profile/my",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile",
+								"my"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Profile Private",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{API_KEY}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/profile/my",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"profile",
+										"my"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "304"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"130-QKstTctG1b8avJ/tVxy0BJzLTno\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Dec 2022 11:48:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"10000\",\n    \"message\": \"success\",\n    \"data\": {\n        \"name\": \"Admin\",\n        \"email\": \"admin@xyz.com\",\n        \"roles\": [\n            {\n                \"_id\": \"63a197b39e07f859826e6626\",\n                \"code\": \"LEARNER\"\n            },\n            {\n                \"_id\": \"63a197b39e07f859826e6627\",\n                \"code\": \"WRITER\"\n            },\n            {\n                \"_id\": \"63a197b39e07f859826e6628\",\n                \"code\": \"EDITOR\"\n            },\n            {\n                \"_id\": \"63a197b39e07f859826e6629\",\n                \"code\": \"ADMIN\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Set Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"$2b$10$c8pVEqEHJwl6hd0SavTVPui9sDougDRwefnhHvQJba0G8laZ2US/O\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/credential/setpassword",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"credential",
+								"setpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve Dentist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGkuZGV2Lnh5ei5jb20iLCJhdWQiOiJ4eXouY29tIiwic3ViIjoiNjUyZjdlZjg4ZTI1MWM3YzRlNTMxZDU1IiwiaWF0IjoxNjk3Nzc1NTA1LCJleHAiOjE2OTc5NDgzMDUsInBybSI6Ijc4MjEzMGRhYjAzYzA0ZGIzZGU5MjIwYWMyYTZlZDQ1MTYyOWY2ZGMwNjU3OTY2MDJjNmY2MDlhNDZmNGY3NjAxMTgzNmI4ZmRlNWY3OTIyNzc4YTJjMGU2NzJlMjcwZDFiMDc0NDdlZTI1ZWQ0ZGFmMzY3Y2E0M2E4MGQ4MWE0In0.jjVlHsYhC3w6tDCSv5s9N5JCuGIZE5XyuR8QiYyqGdk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dentistId\": \"652e574717091afe4c43b0d1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/approve/dentist",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"approve",
+								"dentist"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "General",
+			"item": [
+				{
+					"name": "Get Pre-Signed url",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/general/file/presignedurl?type=ASSET&extension=jpg",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"general",
+								"file",
+								"presignedurl"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "ASSET"
+								},
+								{
+									"key": "extension",
+									"value": "jpg"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete file from s3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/general/file/delete?objectKey=https://deutsche-dev-assets.s3.ap-south-1.amazonaws.com/samara-doole-peaTniZsUQs-unsplash.jpg",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"general",
+								"file",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "objectKey",
+									"value": "https://deutsche-dev-assets.s3.ap-south-1.amazonaws.com/samara-doole-peaTniZsUQs-unsplash.jpg"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all countries",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/general/countries",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"general",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get country by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/general/countries/:countryId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"general",
+								"countries",
+								":countryId"
+							],
+							"variable": [
+								{
+									"key": "countryId",
+									"value": "101"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get cities by country",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/general/cities/bycountry/:countryId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"general",
+								"cities",
+								"bycountry",
+								":countryId"
+							],
+							"variable": [
+								{
+									"key": "countryId",
+									"value": "101"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get city by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/general/cities/:cityId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"general",
+								"cities",
+								":cityId"
+							],
+							"variable": [
+								{
+									"key": "cityId",
+									"value": "52"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clinic",
+			"item": [
+				{
+					"name": "Create clinic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"clinic\": {\n        \"name\": \"Example clinic\",\n        \"profilePicUrl\": \"https://deutsche-dev-assets.s3.ap-south-1.amazonaws.com/samara-doole-peaTniZsUQs-unsplash.jpg\", // S3 url got from upload api\n        \"email\": \"example@gmail.com\",\n        \"phoneNumber\": 1234567890,\n        \"countryCode\": \"91\", // standard country code\n        \"address\": {\n            \"country\": 101, // _id got from country api\n            \"city\": 57933, // _id got from city api\n            \"street\": \"27th main, HSR layout\"\n        },\n        \"shipmentMethod\": \"SELF\", // COURIER\n        \"pricingPlan\": {\n            \"type\": \"PER_ALIGNER\", // \"PER_CASE\"\n            \"currency\": \"INR\", // standard corrency code\n            \"price\": 20\n            // IF type == 'PER_CASE'\n            // \"simpleCasePrice\": 10,\n            // \"moderateCasePrice\": 20,\n            // \"complexCasePrice\": 45\n            \n        }\n    },\n    \"dentist\": {\n        \"profilePicUrl\": \"https://deutsche-dev-assets.s3.ap-south-1.amazonaws.com/ben-sweet-2LowviVHZ-E-unsplash.jpg\", // S3 url got from upload api\n        \"name\": \"Example Admin\",\n        \"phoneNumber\": \"1234567890\",\n        \"countryCode\": \"91\", // standard country code phoneNumber\n        \"isOnWhatsapp\": true,\n        \"email\": \"example@gmail.com\",\n        \"gender\": \"MALE\", // MALE FEMALE OTHER\n        \"address\": {\n            \"country\": 101, // _id got from country api\n            \"city\": 57933, // _id got from city api\n            \"street\": \"Modena house, nagavara\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/clinic",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"clinic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Clinic",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/clinic/search?searchVal=clinic",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"clinic",
+								"search"
+							],
+							"query": [
+								{
+									"key": "searchVal",
+									"value": "clinic"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dentist",
+			"item": [
+				{
+					"name": "Create Dentist",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"profilePicUrl\": \"https://deutsche-dev-assets.s3.ap-south-1.amazonaws.com/ben-sweet-2LowviVHZ-E-unsplash.jpg\", // S3 url got from upload api\n    \"name\": \"Yusuf Delvi\",\n    \"phoneNumber\": \"8884036192\",\n    \"countryCode\": \"91\", // standard country code phoneNumber\n    \"isOnWhatsapp\": true,\n    \"email\": \"yusufmddelvi8@gmail.com\",\n    \"gender\": \"MALE\", // MALE FEMALE OTHER\n    \"address\": {\n        \"country\": 101, // _id got from country api\n        \"city\": 57933, // _id got from city api\n        \"street\": \"Modena house, nagavara\"\n    },\n    \"clinic\": \"652cdd152a9b068c842f6f66\" //clinic id\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/dentist",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"dentist"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "inquiry",
+			"item": [
+				{
+					"name": "Create Inquiry",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order\": {\n        \"prodType\": \"ALIGNER\", // ALIGNER, REFINER, RETAINER\n        \"archSide\": \"UPPER\", // UPPER, LOWER, DUAL\n        \"impressionType\": \"SOFT_COPY\", // PHYSICAL, SOFT_COPY\n        \"impressionFiles\": [\n            \"https://fileurl.com\",\n            \"https://fileurl.com\"\n        ],\n        \"externalImages\": [\n            \"https://imgurl.com\",\n            \"https://imgurl.com\"\n        ],\n        \"notificationsType\": [\"WHATSAPP\", \"EMAIL\"], // WHATSAPP EMAIL\n        \"treatmentDetails\": {\n            \"restrictedTooth\": [\n                1,\n                2,\n                3\n            ],\n            \"extractedTooth\": [\n                4,\n                5,\n                6\n            ],\n            \"iprTooth\": [\n                7,\n                8,\n                9\n            ],\n            \"note\": \"Additional details from dentist\",\n            \"anterior\": \"MAINTAIN_CURRENT_RELATION\", // MAINTAIN_CURRENT_RELATION, IMPROVE_CANINE_RELATION, IMPROVE_CANINE_MOLAR_RELATION\n            \"overJet\": \"SHOW_OVER_JET_POST_ALIGNMENT\", // SHOW_OVER_JET_POST_ALIGNMENT MAINTAIN_OVER_JET IMPROVE_OVER_JET_IPR\n            \"overBite\": \"SHOW_OVER_JET_POST_ALIGNMENT\", // SHOW_OVER_JET_POST_ALIGNMENT MAINTAIN_OVER_BITE, IMPROVE_OVER_BITE\n            \"biteRamps\": \"AUTO\", // AUTO LINGUAL_SIDE_UPPER NONE\n            \"midLine\": \"SHOW_MIDLINE_POST_ALIGNMENT\", // SHOW_MIDLINE_POST_ALIGNMENT, MAINTAIN_MIDLINE, IMPROVE_MIDLINE_IPR\n            \"spacing\": \"CLOSE_ALL\", // CLOSE_ALL, MAINTAIN_MIDLINE, NONE\n            \"spacingCrowding\": [\n                6\n            ]\n        }\n    },\n    //\"patientId\": // found patient id\n    \"patient\": {\n        \"profilePicUrl\": \"https://deutsche-dev-assets.s3.ap-south-1.amazonaws.com/ben-sweet-2LowviVHZ-E-unsplash.jpg\", // S3 url got from upload api\n        \"name\": \"Yusuf Delvi\",\n        \"phoneNumber\": \"8884036192\",\n        \"countryCode\": \"91\", // standard country code phoneNumber\n        \"email\": \"patient2@gmail.com\",\n        \"gender\": \"MALE\", // MALE FEMALE OTHER\n        \"dob\": \"1998-12-06T18:30:00.000Z\" //date in iso\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/inquiry",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"inquiry"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lab",
+			"item": [
+				{
+					"name": "Get labs with pagination",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/lab?pageNumber=1&limit=10",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"lab"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "Search patient",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/patient/search?searchVal=admin",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"patient",
+								"search"
+							],
+							"query": [
+								{
+									"key": "searchVal",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{ACCESS_TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
